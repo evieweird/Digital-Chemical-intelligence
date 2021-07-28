@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import pymysql
+import pymysql.cursors
 
 db = pymysql.connect(
     host='dci-database.capioxzatswy.ap-southeast-2.rds.amazonaws.com',
