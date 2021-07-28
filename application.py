@@ -1,7 +1,7 @@
 from flask import Flask, render_template
-import pymysql.cursors
+import pyodbc
 
-db = pymysql.connect(host='dci-database.capioxzatswy.ap-southeast-2.rds.amazonaws.com',
+db = pyodbc.connect(host='dci-database.capioxzatswy.ap-southeast-2.rds.amazonaws.com',
                              user='admin',
                              password='WH4eO1nkUbsoD8a0iUXi',  
                              db="sys",
