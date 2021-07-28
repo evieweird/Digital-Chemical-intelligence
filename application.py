@@ -1,19 +1,21 @@
 from flask import Flask, render_template
-import pymysql
-import re
+import pyodbc
 
 application = Flask(__name__, template_folder='template')
 
-host='dci-database.capioxzatswy.ap-southeast-2.rds.amazonaws.com'
-user = 'admin'
-password = 'WH4eO1nkUbsoD8a0iUXi'
-db = 'dci-database'
 
-con = pymysql.connect(host=host,user=user,password=password,db=db, use_unicode=True, charset='utf8')
-       
-cur = con.cursor()
-cur.execute("SELECT * FROM dataset")
-data = cur.fetchall()
+
+server = 'database-1.capioxzatswy.ap-southeast-2.rds.amazonaws.com'
+database = 'dci-database'
+username = 'admin'
+password = 'WH4eO1nkUbsoD8a0iUXi'
+driver = '{ODBC Driver 17 for SQL Server}'
+
+with pyodbc.connect(
+        'DRIVER=' + driver + ';SERVER=' + server + ';PORT=1433;DATABASE=' + database + ';UID=' + username + ';PWD=' + password) as conn:
+    with conn.cursor() as cursor:
+        cursor.execute("SELECT * FROM DCIDB")
+        data = cursor.fetchall()
 
 @application.route('/', methods=['GET', 'POST'])
 def hello_world():
