@@ -25,13 +25,7 @@
         </div>
     </nav>
 
-    {% for item in data %}
-    <tr>
-        <td>{{item[0]}}</td>
-        <td>{{item[1]}}</td>
-        
-    </tr>
-    {% endfor %}
+    {{ data }}  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
 </body>
