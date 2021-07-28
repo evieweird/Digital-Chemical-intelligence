@@ -1,12 +1,13 @@
 from flask import Flask, render_template
-import pymysql.cursors
+import pymysql
 
-db = pymysql.connect(host='dci-database.capioxzatswy.ap-southeast-2.rds.amazonaws.com',
-                             user='admin',
-                             password='WH4eO1nkUbsoD8a0iUXi',  
-                             db="sys",
-                             charset='utf8mb4',
-                             )
+db = pymysql.connect(
+    host='dci-database.capioxzatswy.ap-southeast-2.rds.amazonaws.com',
+    user='admin',
+    password='WH4eO1nkUbsoD8a0iUXi',  
+    db="sys",
+    charset='utf8mb4',
+    )
 
 cursor = db.cursor()
 query = "SELECT * FROM sys.DCIDB;"
