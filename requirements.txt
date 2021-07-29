@@ -3,8 +3,8 @@ Flask==2.0.1
 itsdangerous==2.0.1
 Jinja2==3.0.1
 MarkupSafe==2.0.1
+numpy==1.21.1
 PyMySQL==1.0.2
 pyodbc==4.0.31
+rdkit-pypi==2021.3.4
 Werkzeug==2.0.1
-pymssql==2.1.1
-rdkit-pypi
