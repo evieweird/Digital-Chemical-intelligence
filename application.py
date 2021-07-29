@@ -1,5 +1,10 @@
 from flask import Flask, render_template
 import pymysql.cursors
+from rdkit import Chem
+from rdkit.Chem import Draw 
+from rdkit.Chem.Draw import rdMolDraw2D
+from flask import Markup
+
 
 db = pymysql.connect(
     host='dci-database.capioxzatswy.ap-southeast-2.rds.amazonaws.com',
@@ -16,10 +21,19 @@ data = cursor.fetchall()
 
 application = Flask(__name__, template_folder='template')
 
+
+mol = Chem.MolFromSmiles('c1ccccc1')
+d = rdMolDraw2D.MolDraw2DSVG(300, 350)
+d.DrawMolecule(mol)
+d.FinishDrawing()
+m = d.GetDrawingText()
+
+
 @application.route('/', methods=['GET', 'POST'])
 def hello_world():
     return render_template('index.html')
 
 @application.route('/database/', methods=['GET', 'POST'])
 def about():
-    return render_template('database.html', data=data)
+    
+    return render_template('database.html', data=Markup(m))
